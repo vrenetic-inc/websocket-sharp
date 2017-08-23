@@ -624,6 +624,8 @@ namespace WebSocketSharp
       }
     }
 
+    public List<KeyValuePair<string, string>> Headers { get; set; }
+
     #endregion
 
     #region Public Events
@@ -1201,6 +1203,10 @@ namespace WebSocketSharp
       if (_cookies.Count > 0)
         ret.SetCookies (_cookies);
 
+      if (Headers != null)
+        foreach (var header in Headers)
+          headers[header.Key] = header.Value;
+            
       return ret;
     }
 
